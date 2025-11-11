@@ -1,11 +1,14 @@
 const express = require('express');
+
+const userRouter = require('./routes/users');
 const app = express();
-const PORT = 3030;
+
+app.set('view engine', 'ejs');
+app.use('/users', userRouter);
 
 app.get('/', (req, res) => {
-    res.send('Hello, World!');
+    res.render('index', { user: 'Derrek' });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});     
+
+app.listen(3030);
